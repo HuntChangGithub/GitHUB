@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunt.j1902.mapper.ProjectMapper">
+
+    <insert id="addProject" parameterType="com.hunt.j1902.pojo.Project">
+        INSERT INTO project (uid, pname, ptype, pinfo, needmoney, needtime, pimg, pimgs, uinfo, uinfos, tel1, tel2, zhuangtai) VALUES (#{uid},#{pname},#{ptype},#{pinfo},#{needmoney},#{needtime},#{pimg},#{pimgs},#{uinfo},#{uinfos},#{tel1},#{tel2},#{zhuangtai})
+    </insert>
+    <select id="getPid" parameterType="com.hunt.j1902.pojo.Project" resultType="int">
+        SELECT pid FROM project WHERE uid=#{uid} AND pname=#{pname}
+    </select>
+    <update id="upCard" parameterType="com.hunt.j1902.pojo.Project">
+        UPDATE project SET pucard=#{pucard},usernumber=#{usernumber} WHERE pid=#{pid}
+    </update>
+    <select id="getPro" parameterType="string" resultType="com.hunt.j1902.pojo.Project">
+        SELECT * FROM project WHERE zhuangtai=#{zhuangtai}
+    </select>
+    <select id="getProById" parameterType="int" resultType="com.hunt.j1902.pojo.Project">
+        SELECT * FROM project WHERE pid=#{pid}
+    </select>
+    <update id="shenHePro" >
+        UPDATE project SET zhuangtai=#{zhuangtai},pss=#{pss} WHERE pid=#{pid}
+    </update>
+</mapper>

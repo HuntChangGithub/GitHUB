@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunt.j1902.mapper.RetablesMapper">
+    <insert id="addReturn" parameterType="com.hunt.j1902.pojo.Retables">
+
+        INSERT INTO retables (pid, pname, paymoney, retype, minge, canbuy, rewhat, renumber, reimg, backtime, fapiao, youfei)
+        VALUES (#{pid},#{pname},#{paymoney},#{retype},#{minge},#{canbuy},#{rewhat},#{renumber},#{reimg},#{backtime},#{fapiao},#{youfei})
+    </insert>
+    <select id="getRetabesByPid" parameterType="int" resultType="com.hunt.j1902.pojo.Retables">
+        SELECT * FROM retables WHERE pid=#{pid}
+    </select>
+</mapper>

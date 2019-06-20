@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunt.j1902.mapper.UserMapper">
+    <select id="getUserByName" parameterType="string" resultType="com.hunt.j1902.pojo.User">
+        SELECT * FROM user WHERE uname=#{uname}
+    </select>
+    <insert id="addUser" parameterType="com.hunt.j1902.pojo.User">
+        INSERT INTO user (uname,upw,upower,email,isrel) VALUES (#{uname},#{upw},#{upower},#{email},#{isrel})
+    </insert>
+    <select id="getUsers" resultType="com.hunt.j1902.pojo.User">
+        SELECT * FROM user
+    </select>
+    <insert id="addUser1" parameterType="com.hunt.j1902.pojo.User">
+        INSERT INTO user (uname,upw,upower,email,relname,isrel) VALUES (#{uname},#{upw},#{upower},#{email},#{relname},#{isrel})
+    </insert>
+    <delete id="delUserById" parameterType="int" >
+        DELETE FROM user WHERE uid=#{uid}
+    </delete>
+    <select id="getUserById" parameterType="int" resultType="com.hunt.j1902.pojo.User">
+        SELECT * FROM user WHERE uid=#{uid}
+    </select>
+    <update id="updateUser" parameterType="com.hunt.j1902.pojo.User">
+        UPDATE user set uname=#{uname},relname=#{relname},email=#{email}WHERE uid=#{uid}
+    </update>
+    <select id="selectUser" parameterType="string" resultType="com.hunt.j1902.pojo.User">
+       select * from user where uname like "%"#{string}"%" or relname like "%"#{string}"%" or email like "%"#{string}"%" or tel like "%"#{string}"%"
+    </select>
+    <update id="upUser" parameterType="com.hunt.j1902.pojo.User">
+       UPDATE user set unumber=#{unumber}, uimg=#{uimg} ,utype=#{utype} , relname=#{relname} , tel=#{tel}  , isrel=#{isrel} WHERE uid=#{uid}
+    </update>
+    <select id="getUserByIsrel" parameterType="string" resultType="com.hunt.j1902.pojo.User">
+        SELECT * FROM user WHERE isrel=#{isrel}
+    </select>
+    <update id="rzUpdate" parameterType="com.hunt.j1902.pojo.User">
+        UPDATE user set isrel=#{isrel}, ps=#{ps} WHERE uid=#{uid}
+    </update>
+    <update id="cleanShenPi" parameterType="com.hunt.j1902.pojo.User">
+        UPDATE user set isrel=#{isrel} WHERE uid=#{uid}
+    </update>
+    <update id="upUpowerByUid" parameterType="com.hunt.j1902.pojo.User">
+        UPDATE user set upower=#{upower},isrel=#{isrel} WHERE uid=#{uid}
+    </update>
+</mapper>

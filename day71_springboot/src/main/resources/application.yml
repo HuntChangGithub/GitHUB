@@ -1,0 +1,17 @@
+
+server:
+  port: 8080
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/project?characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password:
+  servlet:
+    multipart:
+      max-file-size: 30MB
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.hunt.j1902.pojo

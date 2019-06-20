@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hunt.j1902.mapper.RoleMapper">
+    <select id="getRole" resultType="com.hunt.j1902.pojo.Role">
+        select u.uid,u.uname,r.* from user u,urole ur,role r where u.uid = ur.uid and ur.rid = r.rid
+    </select>
+    <select id="getRoleByUid" resultType="com.hunt.j1902.pojo.Role">
+        select u.uid,u.uname,r.* from user u,urole ur,role r where u.uid = ur.uid and ur.rid = r.rid and u.uid = #{uid}
+    </select>
+    <select id="getRidByRolename" parameterType="string" resultType="int">
+        SELECT rid FROM role WHERE rolename=#{rolename}
+    </select>
+</mapper>
